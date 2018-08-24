@@ -6,12 +6,6 @@ WORKDIR /usr/src/app
 COPY start.sh .
 RUN chmod +x ./start.sh
 RUN mkdir ./conf
-COPY env-global.sh .
-RUN chmod 666 ./env-global.sh
-RUN chmod +x ./env-global.sh
-COPY env-project.sh .
-RUN chmod 666 ./env-project.sh
-RUN chmod +x ./env-project.sh
 
 ENV NGINX_VERSION 1.13.5-1~stretch
 ENV NJS_VERSION   1.13.5.0.1.13-1~stretch
@@ -108,8 +102,6 @@ RUN set -x \
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
-
-RUN apt-get update && apt-get -y install curl && apt-get -y install gnutls-bin
 
 EXPOSE 8080
 
