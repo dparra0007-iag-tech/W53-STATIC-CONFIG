@@ -2,9 +2,9 @@
 set -e
 
 cd /usr/src/app/conf
-rm -rf /usr/src/app/conf/*
-rm -f /usr/src/app/conf/.env
-STR=$'#!/bin/bash\n'
+#rm -rf /usr/src/app/conf/*
+#rm -f /usr/src/app/conf/.env
+#STR=$'#!/bin/bash\n'
 #echo "$STR" > .env
 
 #wget $GLOBALCONF -O env-global.sh 

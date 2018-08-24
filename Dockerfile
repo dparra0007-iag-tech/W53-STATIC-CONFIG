@@ -107,5 +107,7 @@ EXPOSE 8080
 
 STOPSIGNAL SIGTERM
 
+COPY ./.env /usr/src/app/conf/.env
+
 #CMD ["nginx", "-g", "daemon off;"]
 CMD ./start.sh
