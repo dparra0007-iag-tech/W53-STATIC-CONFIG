@@ -109,6 +109,8 @@ RUN set -x \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
+RUN apt-get update && apt-get -y install curl && apt-get -y install gnutls-bin
+
 EXPOSE 8080
 
 STOPSIGNAL SIGTERM
