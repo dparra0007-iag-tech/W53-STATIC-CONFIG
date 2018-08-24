@@ -6,6 +6,12 @@ WORKDIR /usr/src/app
 COPY start.sh .
 RUN chmod +x ./start.sh
 RUN mkdir ./conf
+COPY env-global.sh .
+RUN chmod 666 ./env-global.sh
+RUN chmod +x ./env-global.sh
+COPY env-project.sh .
+RUN chmod 666 ./env-project.sh
+RUN chmod +x ./env-project.sh
 
 ENV NGINX_VERSION 1.13.5-1~stretch
 ENV NJS_VERSION   1.13.5.0.1.13-1~stretch
@@ -106,8 +112,6 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 EXPOSE 8080
 
 STOPSIGNAL SIGTERM
-
-COPY ./.env /usr/src/app/conf/.env
 
 #CMD ["nginx", "-g", "daemon off;"]
 CMD ./start.sh
